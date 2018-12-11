@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @article.title %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @article.content %>
+</p>
+
+<%= link_to 'Back', articles_path %>
+
+
+<h2>コメント</h2>
+
+<% if @article.comments.empty? %>
+  コメントはまだありません
+<% else %>
+  <% @article.comments.each_with_index do |comment, index| %>
+    <div>
+      <h3><%= 1 + index %></h3>
+      <p>
+        <%= comment.content %>
+      </p>
+      <p>
+        <%= comment.created_at.strftime("%y/%m/%d %H:%M") %>,
+      </p>
+    </div>
+  <% end %>
+<% end %>
+
+<hr>
+
+<h2>新規コメント投稿</h2>
+
+<%= render 'comments/form' %>

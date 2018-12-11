@@ -1,0 +1,201 @@
+<p id="notice"><%= notice %></p>
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="学生の質問にみんなで答える知識箱">
+  <meta name="author" content="たんこれ">
+  <link rel="icon" href="/assets/favicon.ico">
+
+  <meta property="og:title" content="たんこれ | TOP PAGE" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="http://papurica.com/area51/" />
+  <meta property="og:image" content="http://papurica.com/area51/img/ogp.png" />
+  <meta property="og:site_name" content="たんこれ" />
+  <meta property="og:description" content="みんなで授業をハックしよう" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:description" content="たんこれ | TOP PAGE | 授業ハック" />
+
+  <title>たんこれ | TOP</title>
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <link href="css/manual.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/earlyaccess/notosansjapanese.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div id="nav-container">
+  <nav class="navbar navbar-expand-md navbar py-3 mx-md-auto mx-4">
+  <%= link_to image_tag("/assets/logo.png"), id: "header-logo", alt: "logo", class: "navbar-brand" %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <form id="nav-searchbox" class="form-inline my-0 my-md-2" action="search.html">
+      <input id="nav-search" class="form-control px-3 mr-sm-1 badge-pill" type="search" placeholder="キーワードで検索" aria-label="Search">
+      <button id="nav-search-button" class="btn badge-pill ml-2 my-sm-0" type="submit"><img src="/assets/search.png" alt="検索"></button>
+    </form>
+    <ul class="navbar-nav ml-auto" id="nav-buttons">
+      <li class="nav-item">
+        <%= link_to image_tag("/assets/build.png"), new_article_path, id: "nav-build", class: "btn badge-pill ml-2 my-sm-0", ali: "スレッド作成" %>
+      </li>
+      <li class="nav-item">
+        <a id="nav-notification" class="btn badge-pill ml-3 my-sm-0" href="notification.html"><img src="/assets/notification.png" alt="通知確認"></a>
+      </li>
+    </ul>
+  </div>
+  </nav>
+  </div>
+
+  <div id="body-container" class="row my-6 mx-auto">
+
+    <div class="col-md-8">
+      <div class="border border-white-50 rounded bg-white mb-4 pb-2 top-left">
+        <h1 id="top-h1" class="border-bottom text-white">新着スレッド一覧</h1>
+        <div class="py-3 mx-4 border-bottom each-thread">
+
+          <tbody>
+            <% @articles.each do |article| %>
+              <tr>
+                <h3 class="py-1"><%= link_to article.title, article, class: "font-weight-bold top-thread-title" %></h3>
+                <td><%= article.content %></td>
+                <p class="py-2 top-thread-date">作成日：<%= article.created_at %>　いいね数：<span>30</span>　コメント数：82 </p>
+                <td><%= link_to 'Show', article %></td>
+                <td><%= link_to 'Edit', edit_article_path(article) %></td>
+                <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+            <% end %>
+          </tbody>
+
+          <div class="pt-1">
+            <a href="search.html" class="btn btn-outline-secondary top-tags font-weight-light badge-pill">ライフハック</a>
+            <a href="search.html" class="btn btn-outline-secondary top-tags font-weight-light badge-pill">DS1</a>
+            <a href="search.html" class="btn btn-outline-secondary top-tags font-weight-light badge-pill">テスト情報</a>
+          </div>
+        </div>
+        <div class="py-3 mx-4 border-bottom each-thread">
+          <h3 class="py-1"><a href="thread.html" class="font-weight-bold top-thread-title">情報基礎まじでわからんなんでこんなことになっているんだろうかそれともこ ...</a></h3>
+          <p class="py-2 top-thread-date">作成日：<span>2018/9/23 22:15</span>　いいね数：<span>30</span>　コメント数：82 </p>
+          <div class="pt-1">
+            <a href="search.html" class="btn btn-outline-secondary top-tags font-weight-light badge-pill">情報基礎</a>
+            <a href="search.html" class="btn btn-outline-secondary top-tags font-weight-light badge-pill">グルワ</a>
+            <a href="search.html" class="btn btn-outline-secondary top-tags font-weight-light badge-pill">プログラミング</a>
+            <a href="search.html" class="btn btn-outline-secondary top-tags font-weight-light badge-pill">ヘル</a>
+          </div>
+        </div>
+        <div class="py-3 mx-4 border-bottom each-thread">
+          <h3 class="py-1"><a href="thread.html" class="font-weight-bold top-thread-title">データサイエンス1の確率のテストについて</a></h3>
+          <p class="py-2 top-thread-date">作成日：<span>2018/9/23 22:15</span>　いいね数：<span>30</span>　コメント数：82 </p>
+          <div class="pt-1">
+            <a href="search.html" class="btn btn-outline-secondary top-tags font-weight-light badge-pill">ライフハック</a>
+            <a href="search.html" class="btn btn-outline-secondary top-tags font-weight-light badge-pill">DS1</a>
+            <a href="search.html" class="btn btn-outline-secondary top-tags font-weight-light badge-pill">テスト情報</a>
+          </div>
+        </div>
+        <div class="py-3 mx-4 border-bottom each-thread">
+          <h3 class="py-1"><a href="thread.html" class="font-weight-bold top-thread-title">データサイエンス1の確率のテストについて</a></h3>
+          <p class="py-2 top-thread-date">作成日：<span>2018/9/23 22:15</span>　いいね数：<span>30</span>　コメント数：82 </p>
+          <div class="pt-1">
+            <a href="search.html" class="btn btn-outline-secondary top-tags font-weight-light badge-pill">ライフハック</a>
+            <a href="search.html" class="btn btn-outline-secondary top-tags font-weight-light badge-pill">DS1</a>
+            <a href="search.html" class="btn btn-outline-secondary top-tags font-weight-light badge-pill">テスト情報</a>
+          </div>
+        </div>
+        <div class="py-3 mx-4 each-thread">
+          <h3 class="py-1"><a href="thread.html" class="font-weight-bold top-thread-title">データサイエンス1の確率のテストについて</a></h3>
+          <p class="py-2 top-thread-date">作成日：<span>2018/9/23 22:15</span>　いいね数：<span>30</span>　コメント数：82 </p>
+          <div class="pt-1">
+            <a href="search.html" class="btn btn-outline-secondary top-tags font-weight-light badge-pill">ライフハック</a>
+            <a href="search.html" class="btn btn-outline-secondary top-tags font-weight-light badge-pill">DS1</a>
+            <a href="search.html" class="btn btn-outline-secondary top-tags font-weight-light badge-pill">テスト情報</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div id="top-taglist" class="mb-3">
+        <h2 class="text-center">タグ一覧</h2>
+        <hr>
+        <div class="p-2">
+          <a href="search.html" class="btn btn-outline-dark top-tags font-weight-light m-1 badge-pill">情報基礎1 (32)</a>
+          <a href="search.html" class="btn btn-outline-dark top-tags font-weight-light m-1 badge-pill">DS1 (19)</a>
+          <a href="search.html" class="btn btn-outline-dark top-tags font-weight-light m-1 badge-pill">冨田勝 (10)</a>
+          <a href="search.html" class="btn btn-outline-dark top-tags font-weight-light m-1 badge-pill">法律学 (24)</a>
+          <a href="search.html" class="btn btn-outline-dark top-tags font-weight-light m-1 badge-pill">確率 (17)</a>
+          <a href="search.html" class="btn btn-outline-dark top-tags font-weight-light m-1 badge-pill">機械学習 (8)</a>
+          <a href="search.html" class="btn btn-outline-dark top-tags font-weight-light m-1 badge-pill">進級方法について (3)</a>
+          <a href="search.html" class="btn btn-outline-dark top-tags font-weight-light m-1 badge-pill">楽単 (56)</a>
+        </div>
+      </div>
+      <div id="top-ranking" class="mb-3">
+        <h2 class="text-center">ランキング</h2>
+        <hr>
+        <div id="ranking-container">
+        <div class="pt-2 pb-3 mx-2 clearfix">
+          <img src="img/r1.png" alt="1位" class="ranking-number">
+          <div class="ranking-content pl-2">
+            <h4 class="">国際政治経済の授業共有ルーム</h4>
+            <p class="ranking-thread-date">いいね数：<span>30</span>　コメント数：82</p>
+          </div>
+        </div>
+        <hr>
+        <div class="py-3 mx-2 clearfix">
+          <img src="img/r2.png" alt="2位" class="ranking-number">
+          <div class="ranking-content pl-2">
+            <h4 class="">国際政治経済の授業共有ルーム</h4>
+            <p class="ranking-thread-date">いいね数：<span>30</span>　コメント数：82</p>
+          </div>
+        </div>
+        <hr>
+        <div class="py-3 mx-2 clearfix">
+          <img src="img/r3.png" alt="3位" class="ranking-number">
+          <div class="ranking-content pl-2">
+            <h4 class="">国際政治経済の授業共有ルーム</h4>
+            <p class="ranking-thread-date">いいね数：<span>30</span>　コメント数：82</p>
+          </div>
+        </div>
+        <hr>
+        <div class="py-3 mx-2 clearfix">
+          <img src="img/r4.png" alt="4位" class="ranking-number">
+          <div class="ranking-content pl-2">
+            <h4 class="">国際政治経済の授業共有ルーム</h4>
+            <p class="ranking-thread-date">いいね数：<span>30</span>　コメント数：82</p>
+          </div>
+        </div>
+        <hr>
+        <div class="py-3 mx-2 clearfix">
+          <img src="img/r5.png" alt="5位" class="ranking-number">
+          <div class="ranking-content pl-2">
+            <h4 class="">国際政治経済の授業共有ルーム</h4>
+            <p class="ranking-thread-date">いいね数：<span>30</span>　コメント数：82</p>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="footer">
+  <div class="container clearfix mx-auto">
+    <p class="text-black-50 float-md-left text-center">© 2018 papurica Inc.</p>
+    <ul class="nav float-md-left pl-md-5 pl-0 pb-md-0 pb-3">
+      <li class="nav-item"><a href="regulation.html" class="nav-link py-0 px-md-3 px-2">利用規約</a></li>
+      <li class="nav-item"><a href="privacy.html" class="nav-link py-0 px-md-3 px-2">プライバシー</a></li>
+      <li class="nav-item"><a href="company.html" class="nav-link py-0 px-md-3 px-2">運営会社</a></li>
+      <li class="nav-item"><a href="contact.html" class="nav-link py-0 px-md-3 px-2">お問い合わせ</a></li>
+    </ul>
+  </div>
+  </footer>
+
+</body>
+</html>
+<br>
+
+<%= link_to '新しいスレッドをつくる', new_article_path %>
