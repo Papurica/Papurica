@@ -125,14 +125,14 @@ body {
   width: 75px;
   height: 38px;
   border: 2px solid #bbb;
-  background-image: url(../img/search.png);
+  background-image: url(/assets/search.png);
   background-repeat: no-repeat;
   background-position: center;
   background-size: 22px;
 }
 #nav-search-button:hover {
   background-color: #bbb;
-  background-image: url(../img/search-white.png);
+  background-image: url(/assets/search-white.png);
   background-repeat: no-repeat;
   background-position: center;
   background-size: 22px;
@@ -150,14 +150,14 @@ ul#nav-buttons {
   height: 38px;
   border: 2px solid #f46f48;
   display: block;
-  background-image: url(../img/build.png);
+  background-image: url(/assets/build.png);
   background-repeat: no-repeat;
   background-position: center;
   background-size: 13px;
 }
 #nav-build:hover {
   background-color: #f46f48;
-  background-image: url(../img/build-white.png);
+  background-image: url(/assets/build-white.png);
   background-repeat: no-repeat;
   background-position: center;
   background-size: 13px;
@@ -171,14 +171,14 @@ ul#nav-buttons {
   height: 38px;
   border: 2px solid #fd8e57;
   display: block;
-  background-image: url(../img/notification.png);
+  background-image: url(/assets/notification.png);
   background-repeat: no-repeat;
   background-position: center;
   background-size: 18px;
 }
 #nav-notification:hover {
   background-color: #fd8e57;
-  background-image: url(../img/notification-white.png);
+  background-image: url(/assets/notification-white.png);
   background-repeat: no-repeat;
   background-position: center;
   background-size: 18px;
@@ -208,7 +208,7 @@ footer a {
 
 #login {
   background-color: #feebe1;
-  background-image: url(../img/bubble.png);
+  background-image: url(/assets/bubble.png);
   background-size: 70vw;
   background-position: center 2vh;
   background-repeat: no-repeat;
@@ -372,7 +372,7 @@ footer a {
   background-color: #fd8b63;
   font-size: 1rem;
   border-radius: 5px 5px 0 0;
-  background-image: url(../img/new.png);
+  background-image: url(/assets/new.png);
   background-repeat: no-repeat;
   background-position: 40px center;
   background-size: 35px;
@@ -398,7 +398,7 @@ footer a {
 #top-taglist h2 {
   font-size: 0.9rem;
   padding: 22px 0 18px 15px;
-  background-image: url(../img/tag.png);
+  background-image: url(/assets/tag.png);
   background-repeat: no-repeat;
   background-position: 90px 18px;
   background-size: 22px;
@@ -420,7 +420,7 @@ footer a {
 #top-ranking h2 {
   font-size: 0.9rem;
   padding: 22px 0 18px 15px;
-  background-image: url(../img/ranking.png);
+  background-image: url(/assets/ranking.png);
   background-repeat: no-repeat;
   background-position: 84px 20px;
   background-size: 26px;
@@ -473,7 +473,7 @@ footer a {
     font-size: 1.2rem;
     letter-spacing: 0.05rem;
     background-origin: border-box;
-    background-image: url(../img/submit2.png);
+    background-image: url(/assets/submit2.png);
     background-repeat: no-repeat;
     background-position: 18% 50%;
     background-size: 1.4rem 1.4rem;
@@ -529,7 +529,7 @@ footer a {
   font-size: 1rem;
   color: #fb8449;
   border-radius: 5px 5px 0 0;
-  background-image: url(../img/create.png);
+  background-image: url(/assets/create.png);
   background-repeat: no-repeat;
   background-position: 220px center;
   background-size: 25px;
@@ -575,7 +575,7 @@ footer a {
   background-color: #fbdfcf;
   font-size: 1rem;
   border-radius: 5px 5px 0 0;
-  background-image: url(../img/search-orange.png);
+  background-image: url(/assets/search-orange.png);
   background-repeat: no-repeat;
   background-position: 40px center;
   background-size: 30px;
