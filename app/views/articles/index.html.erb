@@ -44,10 +44,15 @@
       <li class="nav-item">
         <%= link_to image_tag("/assets/build.png"), new_article_path, id: "nav-build", class: "btn badge-pill ml-2 my-sm-0", ali: "スレッド作成" %>
       </li>
+      <% if logged_in? %>
       <li class="nav-item">
         <a id="nav-notification" class="btn badge-pill ml-3 my-sm-0" href="notification.html"><img src="/assets/notification.png" alt="通知確認"></a>
         <%= link_to "Settings", edit_user_path(current_user) %>
       </li>
+        <li><%= link_to "Log out", logout_path, method: :delete %></li>
+      <% else %>
+        <li><%= link_to "Log in", login_path %></li>
+      <% end %>
     </ul>
   </div>
   </nav>
