@@ -6,6 +6,7 @@ class FavoritesController < ApplicationController
     end
     favorites = Favorite.where(comment_id: comment.id, user_id: current_user.id)
     if favorites.count > 0
+      favorites[0].delete
       return
     end
     favorite = Favorite.new
