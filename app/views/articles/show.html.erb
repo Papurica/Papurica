@@ -41,7 +41,7 @@
           <p class="comment-text"><%= comment.content %></p>
           <div class="comment-buttons">
             <a href="#" class="reply-button">コメント</a>
-            <a href="#" class="like-button">ありがとう</a>
+            <%= link_to "ありがとう", article_comment_favorites_path(comment_id: comment.id, article_id: @article.id), :method => :post %>
             <a href="#" class="trash-button">削除</a>
           </div>
         </div>
