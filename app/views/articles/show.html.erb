@@ -51,16 +51,16 @@
     <div class="border border-white-50 bg-white mb-4 pb-2 thread-main">
       <div id="comment-container">
         <h1>新規コメント</h1>
-        <form class="" action="index.html" method="post">
-          <textarea name="name" rows="8"></textarea>
+        <%= form_for([@article, @comment]) do |f| %>
+          <%= f.text_area :content, :size => "20x8" %>
           <div class="mx-auto clearfix">
             <label class="btn float-left" for="inputFile">
-              ファイル選択<input type="file" name="inputFile" id="inputFile" value="投稿する" class="d-none">
+              ファイル選択<%= f.file_field :file, :id => "inputFile", :class => "d-none", :value => "投稿する" %>
             </label>
-            <input type="text" readonly="" class="float-left">
-            <input type="submit" name="post" value="投稿する" class="btn badge-pill float-right">
+            <%= f.hidden_field :article_id, :value => @article.id %>
+            <%= f.submit "投稿する" %>
           </div>
-        </form>
+        <% end %>
       </div>
     </div>
   </div>
