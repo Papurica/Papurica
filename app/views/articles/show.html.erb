@@ -1,38 +1,117 @@
-<p id="notice"><%= notice %></p>
+<div id="nav-container">
+  <nav class="navbar navbar-expand-md navbar py-3 mx-md-auto mx-4">
+    <a class="navbar-brand" href="index.html"><img src="/assets/logo.png" alt="logo" id="header-logo"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-<p>
-  <strong>Title:</strong>
-  <%= @article.title %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @article.content %>
-</p>
-
-<%= link_to 'Back', articles_path %>
-
-
-<h2>コメント</h2>
-
-<% if @article.comments.empty? %>
-  コメントはまだありません
-<% else %>
-  <% @article.comments.each_with_index do |comment, index| %>
-    <div>
-      <h3><%= 1 + index %></h3>
-      <p>
-        <%= comment.content %>
-      </p>
-      <p>
-        <%= comment.created_at.strftime("%y/%m/%d %H:%M") %>,
-      </p>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <form id="nav-searchbox" class="form-inline my-0 my-md-2" action="search.html">
+        <input id="nav-search" class="form-control px-3 mr-sm-1 badge-pill" type="search" placeholder="キーワードで検索" aria-label="Search">
+        <button id="nav-search-button" class="btn badge-pill ml-2 my-sm-0" type="submit"><img src="/assets/search.png" alt="検索"></button>
+      </form>
+      <ul class="navbar-nav ml-auto" id="nav-buttons">
+        <li class="nav-item">
+          <a id="nav-build" class="btn badge-pill ml-2 my-sm-0" href="create.html"></a>
+        </li>
+        <li class="nav-item">
+          <a id="nav-mypage" class="btn badge-pill ml-3 my-sm-0" href="mypage.html"></a>
+        </li>
+      </ul>
     </div>
-  <% end %>
-<% end %>
+  </nav>
+</div>
 
-<hr>
+<div id="body-container" class="row my-6 mx-auto">
 
-<h2>新規コメント投稿</h2>
+  <div class="col-md-8">
+    <div class="border border-white-50 bg-white mb-4 pb-2 thread-main">
+      <div id="thread-index">
+        <h1><%= @article.title %></h1>
+        <p class="py-2 top-thread-date">作成日：<%= @article.created_at_format %>　いいね数：<%= @article.favorite_count %>　コメント数：<%= @article.comments.count %> </p>
+        <div class="pt-1">
+          <a href="search.html" class="btn thread-tags font-weight-light badge-pill">ライフハック</a>
+          <a href="search.html" class="btn thread-tags font-weight-light badge-pill">DS1</a>
+          <a href="search.html" class="btn thread-tags font-weight-light badge-pill">テスト情報</a>
+        </div>
+      </div>
+      <% @article.comments.each_with_index do |comment, index| %>
+        <div class="thread-comment">
+          <p class="comment-name"><span class="comment-num"><%= index + 1 %>.</span> <%= comment.user.user_name %> <span class="comment-date"><%= comment.created_at_format %></span><span class="comment-thx-num"><%= comment.favorites.count %></span></p>
+          <p class="comment-text"><%= comment.content %></p>
+          <div class="comment-buttons">
+            <a href="#" class="reply-button">コメント</a>
+            <a href="#" class="like-button">ありがとう</a>
+            <a href="#" class="trash-button">削除</a>
+          </div>
+        </div>
 
-<%= render 'comments/form' %>
+      <% end %>
+    </div>
+    <div class="border border-white-50 bg-white mb-4 pb-2 thread-main">
+      <div id="comment-container">
+        <h1>新規コメント</h1>
+        <form class="" action="index.html" method="post">
+          <textarea name="name" rows="8"></textarea>
+          <div class="mx-auto clearfix">
+            <label class="btn float-left" for="inputFile">
+              ファイル選択<input type="file" name="inputFile" id="inputFile" value="投稿する" class="d-none">
+            </label>
+            <input type="text" readonly="" class="float-left">
+            <input type="submit" name="post" value="投稿する" class="btn badge-pill float-right">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div id="thread-recent" class="mb-3">
+      <h2 class="text-center">最近更新されたスレッド</h2>
+      <hr>
+      <div id="recent-container">
+        <div class="pl-2 py-3 mx-2">
+          <a href="thread.html"><h3>国際政治経済の授業共有ルーム</h3></a>
+          <p class="recent-date">2018/4/12 21:00　コメント 82</p>
+        </div>
+        <hr>
+        <div class="pl-2 py-3 mx-2">
+          <a href="thread.html"><h3>すごく難しくてとてもじゃないけどわから...</h3></a>
+          <p class="recent-date">2018/4/12 21:00　コメント 82</p>
+        </div>
+        <hr>
+        <div class="pl-2 py-3 mx-2">
+          <a href="thread.html"><h3>情報基礎ってまじでキツイわ</h3></a>
+          <p class="recent-date">2018/4/12 21:00　コメント 82</p>
+        </div>
+        <hr>
+        <div class="pl-2 py-3 mx-2">
+          <a href="thread.html"><h3>裏死海文書ってどんな内容なの？</h3></a>
+          <p class="recent-date">2018/4/12 21:00　コメント 82</p>
+        </div>
+        <hr>
+        <div class="pl-2 py-3 mx-2">
+          <a href="thread.html"><h3>んな訳あるかっての、普通に原級やんこれ</h3></a>
+          <p class="recent-date">2018/4/12 21:00　コメント 82</p>
+        </div>
+        <hr>
+        <div class="pl-2 py-3 mx-2">
+          <a href="thread.html"><h3>国際政治経済の授業共有ルーム</h3></a>
+          <p class="recent-date">2018/4/12 21:00　コメント 82</p>
+        </div>
+        <hr>
+        <div class="pl-2 py-3 mx-2">
+          <a href="thread.html"><h3>理化学研究所ってどんな場所だよ</h3></a>
+          <p class="recent-date">2018/4/12 21:00　コメント 82</p>
+        </div>
+        <hr>
+        <div class="pl-2 py-3 mx-2">
+          <a href="thread.html"><h3>アルビオンの刀を食べてみたい</h3></a>
+          <p class="recent-date">2018/4/12 21:00　コメント 82</p>
+        </div>
+      </div>
+    </div>
+    <a href="#comment-container" id="post-comment-button" class="btn badge-pill mt-2">コメントを投稿する</a>
+  </div>
+
+</div>
