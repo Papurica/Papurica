@@ -37,7 +37,7 @@
       </div>
       <% @article.comments.each_with_index do |comment, index| %>
         <div class="thread-comment">
-          <p class="comment-name"><span class="comment-num"><%= index + 1 %>.</span> <%= comment.user.user_name %> <span class="comment-date"><%= comment.created_at_format %></span><span class="comment-thx-num"><%= comment.favorites.count %></span></p>
+          <p class="comment-name"><span class="comment-num"><%= link_to (index + 1).to_s, "javascript:void(0);", :onclick => 'document.getElementById("comment_box").value = ">>' + (index + 1).to_s + '";document.getElementById("comment-container").scrollIntoView(true);' %>.</span> <%= comment.user.user_name %> <span class="comment-date"><%= comment.created_at_format %></span><span class="comment-thx-num"><%= comment.favorites.count %></span></p>
           <p class="comment-text"><%= comment.content %></p>
           <div class="comment-buttons">
             <a href="#" class="reply-button">コメント</a>
@@ -52,7 +52,7 @@
       <div id="comment-container">
         <h1>新規コメント</h1>
         <%= form_for([@article, @comment]) do |f| %>
-          <%= f.text_area :content, :size => "20x8" %>
+          <%= f.text_area :content, :size => "20x8", :id => "comment_box" %>
           <div class="mx-auto clearfix">
             <label class="btn float-left" for="inputFile">
               ファイル選択<%= f.file_field :file, :id => "inputFile", :class => "d-none", :value => "投稿する" %>
