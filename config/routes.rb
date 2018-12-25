@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   get 'sessions/new'
   get 'users/new'
+  get '/search' => 'articles#search'
+
   resources :articles do
     resources :comments do
       post "favorites", to: "favorites#create"

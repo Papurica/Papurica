@@ -7,6 +7,11 @@ class ArticlesController < ApplicationController
     @articles = Article.all
   end
 
+  def search
+    @articles = Article.search(params[:search])
+  end
+
+
   # GET /articles/1
   # GET /articles/1.json
   def show
