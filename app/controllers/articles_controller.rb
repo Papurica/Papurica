@@ -10,6 +10,7 @@ class ArticlesController < ApplicationController
 
   def search
     @articles = Article.search(params[:search])
+    @keyword = params[:search]
   end
 
 
