@@ -38,7 +38,16 @@ class Article < ApplicationRecord
 
   def Article.search(search) #ここでのself.はUser.を意味する
     if search
-      where(['title LIKE ?', "%#{search}%"]) #検索とnameの部分一致を表示。User.は省略
+      tag = Tag.find_by(name: search)
+      articles_by_title = where(['title LIKE ?', "%#{search}%"]) #検索とnameの部分一致を表示。User.は省略
+      articles_by_tag = []
+      if tag != nil
+        articles_by_tag = tag.article_tags.map { |article_tag|
+          article_tag.article
+        }
+      end
+      return (articles_by_title + articles_by_tag).uniq
+      
     else
       all #全て表示。User.は省略
     end

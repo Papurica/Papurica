@@ -8,7 +8,7 @@
         <p class="py-2 top-thread-date">作成日：<%= @article.created_at_format %>　いいね数：<%= @article.favorite_count %>　コメント数：<%= @article.comments.count %> </p>
         <div class="pt-1">
           <% @article.article_tags.each do |article_tag| %>
-            <%= link_to article_tag.tag.name, "search.html", class: "btn btn-outline-secondary top-tags font-weight-light badge-pill" %>
+            <%= link_to article_tag.tag.name, "/search?search=" + article_tag.tag.name, class: "btn thread-tags font-weight-light badge-pill" %>
           <% end %>
         </div>
       </div>
