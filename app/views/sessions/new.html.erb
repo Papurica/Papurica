@@ -1,19 +1,64 @@
 <% provide(:title, "Log in") %>
-<h1>Log in</h1>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="学生の質問にみんなで答える知識箱">
+  <meta name="author" content="たんこれ">
+  <link rel="icon" href="/assets/favicon.ico">
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_for(:session, url: login_path) do |f| %>
+  <meta property="og:title" content="たんこれ | TOP PAGE" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="http://papurica.com/area51/" />
+  <meta property="og:image" content="http://papurica.com/area51/img/ogp.png" />
+  <meta property="og:site_name" content="たんこれ" />
+  <meta property="og:description" content="みんなで授業をハックしよう" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:description" content="たんこれ | TOP PAGE | 授業ハック" />
 
-      <%= f.label :email %>
-      <%= f.email_field :email, class: 'form-control' %>
+  <title>たんこれ | ログイン</title>
+  <link href="/assets/bootstrap.css" rel="stylesheet">
+  <link href="/assets/manual.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/earlyaccess/notosansjapanese.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="/assets/bootstrap.min.js"></script>
+</head>
 
-      <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %>
 
-      <%= f.submit "Log in", class: "btn btn-primary" %>
-    <% end %>
+<body id="login">
 
-    <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+  <div id="body-container" class="row mx-auto">
+
+    <div class="col-md-7 mx-auto">
+      <div id="login-box" class="rounded bg-white mb-4">
+        <%= form_for(:session, url: login_path) do |f| %>
+          <img src="/assets/logo-large.png" alt="ロゴ">
+          <label for="input-mailaddress" class="sr-only">メールアドレス</label>
+          <%= f.email_field :email, id: "input-mailaddress", class: "form-control mx-auto", placeholder: "メールアドレス" %>
+          <label for="input-password" class="sr-only">Password</label>
+          <%= f.password_field :password, id: "input-password", class: "form-control mx-auto", placeholder: "パスワード" %>
+          <%= f.submit "ログイン", class: "btn btn-block badge-pill mx-auto mt-5 mb-4" %>
+        <% end %>
+          <%= link_to "新規登録", signup_path, class: "btn badge-pill mx-auto mt-5", id: "login-register" %>
+      </div>
+    </div>
   </div>
+
+
+<footer id="login-footer">
+<div class="clearfix">
+  <p class="float-md-left pl-3">© 2018 papurica Inc.</p>
+  <ul class="nav float-md-right pb-md-0 pb-3">
+    <li class="nav-item"><a href="regulation.html" class="nav-link py-0 px-md-3 px-2">利用規約</a></li>
+    <li class="nav-item"><a href="privacy.html" class="nav-link py-0 px-md-3 px-2">プライバシー</a></li>
+    <li class="nav-item"><a href="company.html" class="nav-link py-0 px-md-3 px-2">運営会社</a></li>
+    <li class="nav-item"><a href="contact.html" class="nav-link py-0 px-md-3 px-2">お問い合わせ</a></li>
+  </ul>
 </div>
+</footer>
+
+</body>
+</html>
