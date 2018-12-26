@@ -18,6 +18,7 @@ class ArticlesController < ApplicationController
   # GET /articles/1.json
   def show
     @comment = Comment.new
+    @tags = Tag.all
   end
 
   # GET /articles/new
