@@ -11,7 +11,7 @@
               <tr>
                 <h3 class="py-1"><%= link_to article.title, article, class: "font-weight-bold top-thread-title" %></h3>
                 <td><%= article.content %></td>
-                <p class="py-2 top-thread-date">作成日：<%= article.created_at %>　いいね数：<span>30</span>　コメント数：82 </p>
+                <p class="py-2 top-thread-date">作成日：<%= article.created_at %>　いいね数：<span><%= article.favorite_count %></span>　コメント数：<%= article.comment_count %> </p>
                 <td><%= link_to 'Show', article %></td>
                 <td><%= link_to 'Edit', edit_article_path(article) %></td>
                 <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
