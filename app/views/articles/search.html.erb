@@ -10,7 +10,7 @@
             <tr>
               <h3 class="py-2"><%= link_to article.title, article, class: "font-weight-bold top-thread-title" %></h3>
               <td><%= article.content %></td>
-              <p class="py-2 top-thread-date">作成日：<%= article.created_at %>　いいね数：<span>30</span>　コメント数：82 </p>
+              <p class="py-2 top-thread-date">作成日：<%= article.created_at %>　いいね数：<span><%= article.favorite_count %></span>　コメント数：<%= article.comment_count %> </p>
               <p class="search-thread-comment">ワイルドカードは使えない代わり、getFileList関数を使えば、特定のフォルダに含まれるファイルすべての名前を文字列配列として読み込むことができます。</p>
               <td><%= link_to 'Show', article %></td>
               <td><%= link_to 'Edit', edit_article_path(article) %></td>
