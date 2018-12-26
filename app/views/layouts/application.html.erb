@@ -53,10 +53,10 @@
         <li class="nav-item">
             <a><%= link_to "", new_article_path, id: "nav-build", class: "btn badge-pill ml-2 my-sm-0"%></a>
         </li>
+        <% if logged_in? %>
         <li class="nav-item">
           <a><%= link_to "", edit_user_path(current_user), class: "btn badge-pill ml-3 my-sm-0", id: "nav-mypage" %></a>
         </li>
-        <% if logged_in? %>
           <li><%= link_to "Log out", logout_path, method: :delete %></li>
         <% else %>
           <li><%= link_to "Log in", login_path %></li>

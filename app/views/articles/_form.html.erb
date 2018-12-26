@@ -1,24 +1,24 @@
-<%= form_with(model: article, local: true) do |form| %>
-  <% if article.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
-
-      <ul>
-      <% article.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
 
   <div id="body-container" class="row my-6 mx-auto">
     <div class="col-md-8 mx-auto py-4">
       <div class="border border-white-50 rounded bg-white mb-4 pb-2 top-left">
         <h1 id="create-h1">新着スレッドを作成</h1>
-          <form class="create-form my-4 mx-5">
+        <%= form_with(model: article, local: true, id: "create-form", class: "my-4") do |form| %>
+          <% if article.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+              <ul>
+              <% article.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+
             <p>スレッドタイトル</p>
             <div class="field">
-              <%= form.text_field :title %>
+              <%= form.text_field :title, class: "py-3 px-2" %>
             </div>
 
           <!--  <p>タグ</p>
@@ -26,16 +26,14 @@
 
             <p>最初のコメント</p>
             <div class="field">
-              <%= form.text_area :content %>
+              <%= form.text_area :content, class: "p-2" %>
             </div>
 
             <div class="actions">
-              <%= form.submit :スレッドをつくる %>
+              <%= form.submit :スレッドをつくる, class: "btn badge-pill p-2" %>
             </div>
+        <% end %>
 
-          </form>
       </div>
     </div>
   </div>
-
-<% end %>
