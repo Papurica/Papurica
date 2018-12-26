@@ -10,6 +10,10 @@ class Article < ApplicationRecord
     }
   end
 
+  def comment_count
+    return self.comments.count
+  end
+
   def Article.search(search) #ここでのself.はUser.を意味する
     if search
       where(['title LIKE ?', "%#{search}%"]) #検索とnameの部分一致を表示。User.は省略
