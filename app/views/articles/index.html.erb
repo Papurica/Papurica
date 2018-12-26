@@ -32,7 +32,7 @@
         <hr>
         <div class="p-2">
           <% @tags.each do |tag| %>
-            <%= link_to tag.name + "(" + tag.article_tags.count.to_s + ")", "search.html", :class => "btn btn-outline-dark top-tags font-weight-light m-1 badge-pill" %>
+            <%= link_to tag.name + "(" + tag.article_tags.count.to_s + ")", "/search?search=" + tag.name, :class => "btn btn-outline-dark top-tags font-weight-light m-1 badge-pill" %>
           <% end %>
         </div>
       </div>
