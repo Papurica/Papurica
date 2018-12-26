@@ -31,14 +31,9 @@
         <h2 class="text-center">タグ一覧</h2>
         <hr>
         <div class="p-2">
-          <a href="search.html" class="btn btn-outline-dark top-tags font-weight-light m-1 badge-pill">情報基礎1 (32)</a>
-          <a href="search.html" class="btn btn-outline-dark top-tags font-weight-light m-1 badge-pill">DS1 (19)</a>
-          <a href="search.html" class="btn btn-outline-dark top-tags font-weight-light m-1 badge-pill">冨田勝 (10)</a>
-          <a href="search.html" class="btn btn-outline-dark top-tags font-weight-light m-1 badge-pill">法律学 (24)</a>
-          <a href="search.html" class="btn btn-outline-dark top-tags font-weight-light m-1 badge-pill">確率 (17)</a>
-          <a href="search.html" class="btn btn-outline-dark top-tags font-weight-light m-1 badge-pill">機械学習 (8)</a>
-          <a href="search.html" class="btn btn-outline-dark top-tags font-weight-light m-1 badge-pill">進級方法について (3)</a>
-          <a href="search.html" class="btn btn-outline-dark top-tags font-weight-light m-1 badge-pill">楽単 (56)</a>
+          <% @tags.each do |tag| %>
+            <%= link_to tag.name + "(" + tag.article_tags.count.to_s + ")", "search.html", :class => "btn btn-outline-dark top-tags font-weight-light m-1 badge-pill" %>
+          <% end %>
         </div>
       </div>
       <div id="top-ranking" class="mb-3">
