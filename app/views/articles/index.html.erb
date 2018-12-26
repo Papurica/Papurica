@@ -17,9 +17,9 @@
                 <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
               </tr>
           <div class="pt-1">
-            <a href="search.html" class="btn btn-outline-secondary top-tags font-weight-light badge-pill">ライフハック</a>
-            <a href="search.html" class="btn btn-outline-secondary top-tags font-weight-light badge-pill">DS1</a>
-            <a href="search.html" class="btn btn-outline-secondary top-tags font-weight-light badge-pill">テスト情報</a>
+            <% article.article_tags.each do |article_tag| %>
+              <%= link_to article_tag.tag.name, "search.html", class: "btn btn-outline-secondary top-tags font-weight-light badge-pill" %>
+            <% end %>
           </div>
         </div>
         <% end %>
