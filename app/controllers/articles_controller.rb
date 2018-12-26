@@ -32,7 +32,11 @@ class ArticlesController < ApplicationController
   # POST /articles
   # POST /articles.json
   def create
-    @article = Article.new(article_params)
+    @article = Article.new({
+      title: article_params[:title],
+      content: article_params[:content]
+    })
+    @article.set_tags_from_string(article_params[:tags])
 
     respond_to do |format|
       if @article.save
@@ -77,6 +81,6 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:title, :content)
+      params.require(:article).permit(:title, :content, :tags)
     end
 end

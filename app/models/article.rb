@@ -1,5 +1,6 @@
 class Article < ApplicationRecord
   has_many :comments, dependent: :destroy
+  has_many :article_tags
   def created_at_format
     return self.created_at.strftime("%Y/%m/%d %H:%M")
   end
@@ -7,6 +8,27 @@ class Article < ApplicationRecord
   def favorite_count
     return self.comments.reduce(0) { |sum, comment|
       return sum + comment.favorites.count
+    }
+  end
+  
+  def set_tags_from_string(tag_s)
+    tags = tag_s.split(" ").map { |tag_name|
+      d = Tag.find_by(name: tag_name)
+      if d == nil
+        new_tag = Tag.new
+        new_tag.name = tag_name
+        if new_tag.save
+          new_tag  
+        end
+      else
+        d
+      end
+    }
+    self.article_tags = tags.map { |tag|
+      article_tag = ArticleTag.new
+      article_tag.tag = tag
+      article_tag.article = self
+      article_tag
     }
   end
 
