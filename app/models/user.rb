@@ -21,6 +21,10 @@ class User < ApplicationRecord
   def User.new_token
     SecureRandom.urlsafe_base64
   end
+  def set_random_username
+    id = (0...10).map{ (65 + rand(26)).chr }.join
+    self.username = id
+  end
 
   # 永続セッションのためにユーザーをデータベースに記憶する
   def remember
