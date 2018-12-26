@@ -14,7 +14,7 @@
       </div>
       <% @article.comments.each_with_index do |comment, index| %>
         <div class="thread-comment">
-          <p class="comment-name"><span class="comment-num"><%= (index + 1).to_s %>.</span> <%= comment.user.user_name %> <span class="comment-date"><%= comment.created_at_format %></span><span class="comment-thx-num"><%= comment.favorites.count %></span></p>
+          <p class="comment-name"><span class="comment-num"><%= (index + 1).to_s %>.</span> <%= comment.user.username %> <span class="comment-date"><%= comment.created_at_format %></span><span class="comment-thx-num"><%= comment.favorites.count %></span></p>
           <p class="comment-text"><%= comment.content %></p>
           <div class="comment-buttons">
             <%= link_to "コメント", "javascript:void(0);", :class => "reply-button", :onclick => 'document.getElementById("comment_box").value = ">>' + (index + 1).to_s + '";document.getElementById("comment-container").scrollIntoView(true);' %>
